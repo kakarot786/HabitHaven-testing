@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0284c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0c4a6e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle with Brand Gradient -->
+  <circle cx="50" cy="50" r="48" fill="url(#logoGradient)" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.15))"/>
+  
+  <!-- Mosque Icon (Material-UI Mosque simplified) -->
+  <g fill="white">
+    <!-- Central Dome -->
+    <path d="M50 25 C44 25 40 29 40 35 L40 42 L60 42 L60 35 C60 29 56 25 50 25 Z"/>
+    
+    <!-- Main Building -->
+    <rect x="35" y="42" width="30" height="28" rx="2"/>
+    
+    <!-- Entrance -->
+    <path d="M45 55 L45 70 L55 70 L55 55 C55 52 53 50 50 50 C47 50 45 52 45 55 Z"/>
+    
+    <!-- Left Minaret -->
+    <rect x="28" y="35" width="5" height="35" rx="1"/>
+    <circle cx="30.5" cy="33" r="3"/>
+    <path d="M28 30 L30.5 25 L33 30 Z"/>
+    
+    <!-- Right Minaret -->
+    <rect x="67" y="35" width="5" height="35" rx="1"/>
+    <circle cx="69.5" cy="33" r="3"/>
+    <path d="M67 30 L69.5 25 L72 30 Z"/>
+    
+    <!-- Windows -->
+    <circle cx="42" cy="48" r="2" fill="#0284c7" opacity="0.5"/>
+    <circle cx="58" cy="48" r="2" fill="#0284c7" opacity="0.5"/>
+    
+    <!-- Crescent on Top of Dome -->
+    <path d="M48 22 C46.5 22 45.5 23 45.5 24 C45.5 25 46.5 26 48 26 C47 26 46 25 46 24 C46 23 47 22 48 22 Z" opacity="0.9"/>
+  </g>
+</svg>
