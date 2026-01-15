@@ -51,7 +51,7 @@ const Header = () => {
                   fontSize: { xs: '1.1rem', sm: '1.5rem' }
                 }}
               >
-                Habit<span style={{ color: colors.primary.main }}>Haven</span>
+                Habit<span style={{ color: colors.primary.main }}>HavenS</span>
               </Typography>
               <Typography 
                 variant="caption" 
