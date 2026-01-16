@@ -15,9 +15,8 @@ const createGroup=asyncHandler(async(req,res,next)=>{
   if(!validator.isLength(name,{min:1,max:100})){
     throw new ApiError(400, "Name must be 1-100 characters");
   }
- if(!validator.isLength(description,{min:1,max:100})){
-    throw new ApiError(400, "description must be 1000 characters");
-
+  if(description && !validator.isLength(description,{min:1,max:1000})){
+    throw new ApiError(400, "description must be 1-1000 characters");
   }
 
 
