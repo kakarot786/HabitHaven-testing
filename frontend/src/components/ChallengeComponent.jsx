@@ -348,12 +348,14 @@ const ChallengeComponent = () => {
       {/* Stats Cards */}
       <Grid container spacing={3} sx={{ mb: 4 }}>
         {/* Main Challenge Progress Card */}
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid item xs={12} lg={6}>
           <Card sx={{ 
             background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
             borderRadius: 4,
             overflow: 'hidden',
             position: 'relative',
+            height: '100%',
+            minHeight: 200,
             transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             '&:hover': {
               transform: { xs: 'none', md: 'translateY(-4px)' },
@@ -370,8 +372,8 @@ const ChallengeComponent = () => {
               background: 'rgba(255,255,255,0.1)',
             }} />
             
-            <CardContent sx={{ p: 3, position: 'relative', zIndex: 1 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <CardContent sx={{ p: 3, position: 'relative', zIndex: 1, height: '100%', display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
                 <Box sx={{ flex: 1 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
                     <Trophy size={20} color="rgba(255,255,255,0.8)" />
@@ -419,11 +421,12 @@ const ChallengeComponent = () => {
         </Grid>
 
         {/* Side Stats */}
-        <Grid size={{ xs: 12, md: 6 }}>
+        <Grid item xs={12} lg={6}>
           <Grid container spacing={2} sx={{ height: '100%' }}>
-            <Grid size={{ xs: 6 }}>
+            <Grid item xs={6} sm={6}>
               <Card sx={{ 
                 height: '100%',
+                minHeight: 90,
                 background: 'white',
                 borderRadius: 3,
                 border: '1px solid #e2e8f0',
@@ -431,27 +434,29 @@ const ChallengeComponent = () => {
                 '&:hover': { borderColor: '#22c55e', boxShadow: '0 4px 12px rgba(34, 197, 94, 0.15)' }
               }}>
                 <CardContent sx={{ p: 2.5, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                     <Box sx={{ 
-                      width: 40, height: 40, borderRadius: 2, 
+                      width: 44, height: 44, borderRadius: 2, 
                       background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      <Zap size={20} color="white" />
+                      <Zap size={22} color="white" />
                     </Box>
-                    <Box>
-                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#22c55e', lineHeight: 1 }}>
+                    <Box sx={{ minWidth: 0 }}>
+                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#22c55e', lineHeight: 1, fontSize: { xs: '1.5rem', sm: '1.75rem' } }}>
                         {stats.active}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 500 }}>Active</Typography>
+                      <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 500 }}>Active</Typography>
                     </Box>
                   </Box>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid size={{ xs: 6 }}>
+            <Grid item xs={6} sm={6}>
               <Card sx={{ 
                 height: '100%',
+                minHeight: 90,
                 background: 'white',
                 borderRadius: 3,
                 border: '1px solid #e2e8f0',
@@ -459,27 +464,29 @@ const ChallengeComponent = () => {
                 '&:hover': { borderColor: '#8b5cf6', boxShadow: '0 4px 12px rgba(139, 92, 246, 0.15)' }
               }}>
                 <CardContent sx={{ p: 2.5, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                     <Box sx={{ 
-                      width: 40, height: 40, borderRadius: 2, 
+                      width: 44, height: 44, borderRadius: 2, 
                       background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      <TrendingUp size={20} color="white" />
+                      <TrendingUp size={22} color="white" />
                     </Box>
-                    <Box>
-                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#8b5cf6', lineHeight: 1 }}>
+                    <Box sx={{ minWidth: 0 }}>
+                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#8b5cf6', lineHeight: 1, fontSize: { xs: '1.5rem', sm: '1.75rem' } }}>
                         {stats.inProgress}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 500 }}>In Progress</Typography>
+                      <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 500 }}>In Progress</Typography>
                     </Box>
                   </Box>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid size={{ xs: 6 }}>
+            <Grid item xs={6} sm={6}>
               <Card sx={{ 
                 height: '100%',
+                minHeight: 90,
                 background: 'white',
                 borderRadius: 3,
                 border: '1px solid #e2e8f0',
@@ -487,27 +494,29 @@ const ChallengeComponent = () => {
                 '&:hover': { borderColor: '#06b6d4', boxShadow: '0 4px 12px rgba(6, 182, 212, 0.15)' }
               }}>
                 <CardContent sx={{ p: 2.5, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                     <Box sx={{ 
-                      width: 40, height: 40, borderRadius: 2, 
+                      width: 44, height: 44, borderRadius: 2, 
                       background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      <Trophy size={20} color="white" />
+                      <Trophy size={22} color="white" />
                     </Box>
-                    <Box>
-                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#06b6d4', lineHeight: 1 }}>
+                    <Box sx={{ minWidth: 0 }}>
+                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#06b6d4', lineHeight: 1, fontSize: { xs: '1.5rem', sm: '1.75rem' } }}>
                         {stats.total}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 500 }}>Total</Typography>
+                      <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 500 }}>Total</Typography>
                     </Box>
                   </Box>
                 </CardContent>
               </Card>
             </Grid>
-            <Grid size={{ xs: 6 }}>
+            <Grid item xs={6} sm={6}>
               <Card sx={{ 
                 height: '100%',
+                minHeight: 90,
                 background: 'white',
                 borderRadius: 3,
                 border: '1px solid #e2e8f0',
@@ -515,19 +524,20 @@ const ChallengeComponent = () => {
                 '&:hover': { borderColor: '#f59e0b', boxShadow: '0 4px 12px rgba(245, 158, 11, 0.15)' }
               }}>
                 <CardContent sx={{ p: 2.5, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                     <Box sx={{ 
-                      width: 40, height: 40, borderRadius: 2, 
+                      width: 44, height: 44, borderRadius: 2, 
                       background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center'
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0
                     }}>
-                      <Award size={20} color="white" />
+                      <Award size={22} color="white" />
                     </Box>
-                    <Box>
-                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#f59e0b', lineHeight: 1 }}>
+                    <Box sx={{ minWidth: 0 }}>
+                      <Typography variant="h4" sx={{ fontWeight: 800, color: '#f59e0b', lineHeight: 1, fontSize: { xs: '1.5rem', sm: '1.75rem' } }}>
                         {stats.completed}
                       </Typography>
-                      <Typography variant="caption" sx={{ color: '#64748b', fontWeight: 500 }}>Completed</Typography>
+                      <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 500 }}>Completed</Typography>
                     </Box>
                   </Box>
                 </CardContent>
