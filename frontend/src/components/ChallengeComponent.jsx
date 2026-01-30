@@ -577,7 +577,7 @@ const ChallengeComponent = () => {
       {/* Challenges List */}
       <Grid container spacing={3}>
         {filteredChallenges.length === 0 ? (
-          <Grid size={{ xs: 12 }}>
+          <Grid item xs={12}>
             <Paper sx={{ 
               p: 6, 
               textAlign: 'center', 
@@ -625,7 +625,7 @@ const ChallengeComponent = () => {
             const isActive = challenge.challengeId?.status === 'active';
 
             return (
-              <Grid size={{ xs: 12, sm: 6, lg: 4 }} key={challenge._id}>
+              <Grid item xs={12} sm={6} lg={4} key={challenge._id}>
                 <Card sx={{ 
                   height: '100%',
                   display: 'flex',
@@ -916,7 +916,7 @@ const ChallengeComponent = () => {
               </Typography>
 
               <Grid container spacing={2} sx={{ mb: 3 }}>
-                <Grid size={{ xs: 6 }}>
+                <Grid item xs={6}>
                   <Paper sx={{ p: 3, textAlign: 'center', borderRadius: 3, background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)' }}>
                     <Typography variant="h3" sx={{ fontWeight: 800, color: '#f59e0b' }}>
                       {challengeDetails.challenge?.totalDays}
@@ -926,7 +926,7 @@ const ChallengeComponent = () => {
                     </Typography>
                   </Paper>
                 </Grid>
-                <Grid size={{ xs: 6 }}>
+                <Grid item xs={6}>
                   <Paper sx={{ p: 3, textAlign: 'center', borderRadius: 3, background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)' }}>
                     <Typography variant="h3" sx={{ fontWeight: 800, color: '#22c55e' }}>
                       {challengeDetails.participants?.length || 0}
