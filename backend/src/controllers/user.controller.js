@@ -17,7 +17,7 @@ const generateAccessAndRefreshToken = async (userId) => {
 
     return { accessToken, refreshToken };
   } catch (error) {
-    console.error("ERROR IN GENERATING THE GENRATE AND ACCES TOKEN", Error);
+    console.error("ERROR IN GENERATING THE GENERATE AND ACCESS TOKEN", error);
     throw new ApiError(
       500,
       "something went Wrong  in making the access and refresh token"
@@ -67,7 +67,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
   }
   return res
     .status(200)
-    .json(new ApiResponse(true, "user registered successfully", createdUser));
+    .json(new ApiResponse(200, createdUser, "user registered successfully"));
 });
 
 const login = asyncHandler(async (req, res, next) => {
@@ -168,7 +168,7 @@ const getCurrentUser = asyncHandler(async (req, res) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, "User fetched successfully", user));
+    .json(new ApiResponse(200, user, "User fetched successfully"));
 });
 
 const UpdateAccountDetails = asyncHandler(async (req, res, next) => {

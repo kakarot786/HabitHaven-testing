@@ -40,6 +40,15 @@ const createChallenge = asyncHandler(async (req, res) => {
     status: "active",
   });
 
+  // Automatically add the creator as a participant
+  await ChallengeParticipant.create({
+    userId,
+    challengeId: challenge._id,
+    currentDay: 1,
+    progress: 0,
+    completed: false,
+  });
+
   return res.status(201).json(new ApiResponse(201, challenge, "Challenge created successfully"));
 });
 

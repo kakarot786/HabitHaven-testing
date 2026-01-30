@@ -29,7 +29,7 @@ export const challengeService = {
     const result = await apiService.get(API_ENDPOINTS.CHALLENGE.GET_MY_CHALLENGES);
     
     if (result.success) {
-      const challenges = result.data?.message || result.data?.data || [];
+      const challenges = result.data?.data || [];
       return { 
         success: true, 
         data: Array.isArray(challenges) ? challenges : [] 

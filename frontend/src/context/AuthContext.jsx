@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [loading, setLoading] = useState(true);
+  const [isFirstLogin, setIsFirstLogin] = useState(false);
   
 
 
@@ -84,6 +85,7 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.register({ fullName, email, username, password });
       
       if (result.success) {
+        setIsFirstLogin(true);
         const loginResult = await login(email, password);
         if (loginResult.success) {
           return { success: true, message: 'Registration successful! Welcome to HabitHaven!' };
@@ -141,6 +143,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const clearFirstLogin = () => setIsFirstLogin(false);
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -150,7 +154,9 @@ export const AuthProvider = ({ children }) => {
       register,
       logout,
       updateAccount,
-      changePassword
+      changePassword,
+      isFirstLogin,
+      clearFirstLogin
     }}>
       {children}
     </AuthContext.Provider>

@@ -4,6 +4,9 @@ import { API_ENDPOINTS } from '../constants';
 export const taskService = {
   createTask: async (taskData) => {
     const result = await apiService.post(API_ENDPOINTS.TASK.CREATE, taskData);
+    if (result.success) {
+      return { success: true, data: result.data?.data };
+    }
     return result;
   },
 
@@ -11,21 +14,19 @@ export const taskService = {
     const result = await apiService.get(API_ENDPOINTS.TASK.GET_ALL);
     
     if (result.success) {
-      const tasks = Array.isArray(result.data?.message) 
-        ? result.data.message.map(task => ({
-            _id: task._id || task.id,
-            id: task._id || task.id,
-            userId: task.userId,
-            title: task.title,
-            description: task.description,
-            isCompleted: task.isCompleted,
-            date: task.date,
-            createdAt: task.createdAt,
-            updatedAt: task.updatedAt,
-          }))
-        : result.data?.data || [];
-      
-      return { success: true, data: tasks };
+      const tasksData = result.data?.data || [];
+      return { success: true, data: Array.isArray(tasksData) ? tasksData : [] };
+    }
+    
+    return result;
+  },
+
+  getCompletedTasks: async () => {
+    const result = await apiService.get('/task/history');
+    
+    if (result.success) {
+      const tasksData = result.data?.data || [];
+      return { success: true, data: Array.isArray(tasksData) ? tasksData : [] };
     }
     
     return result;
@@ -33,6 +34,9 @@ export const taskService = {
 
   getTaskById: async (taskId) => {
     const result = await apiService.get(API_ENDPOINTS.TASK.GET_BY_ID(taskId));
+    if (result.success) {
+      return { success: true, data: result.data?.data };
+    }
     return result;
   },
 
@@ -41,6 +45,9 @@ export const taskService = {
       API_ENDPOINTS.TASK.UPDATE(taskId),
       updateData
     );
+    if (result.success) {
+      return { success: true, data: result.data?.data };
+    }
     return result;
   },
 
@@ -49,11 +56,28 @@ export const taskService = {
     return result;
   },
 
+  // Mark today's progress as complete
+  markDayComplete: async (taskId) => {
+    const result = await apiService.post(`/task/day/${taskId}/complete`);
+    if (result.success) {
+      return { 
+        success: true, 
+        data: result.data?.data,
+        message: result.data?.message 
+      };
+    }
+    return result;
+  },
+
+  // Legacy method for backwards compatibility
   markTaskComplete: async (taskId, isCompleted = true) => {
     const result = await apiService.put(
       API_ENDPOINTS.TASK.MARK_COMPLETE(taskId),
       { isCompleted }
     );
+    if (result.success) {
+      return { success: true, data: result.data?.data };
+    }
     return result;
   },
 };

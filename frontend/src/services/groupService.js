@@ -20,7 +20,7 @@ export const groupService = {
     const result = await apiService.get(API_ENDPOINTS.GROUP.GET_ALL);
     
     if (result.success) {
-      const groups = result.data?.message || result.data?.data || [];
+      const groups = result.data?.data || [];
       return { 
         success: true, 
         data: Array.isArray(groups) ? groups : [] 
@@ -38,7 +38,7 @@ export const groupService = {
     const result = await apiService.get(API_ENDPOINTS.GROUP.GET_MY_GROUPS);
     
     if (result.success) {
-      const groups = result.data?.message || result.data?.data || [];
+      const groups = result.data?.data || [];
       return { 
         success: true, 
         data: Array.isArray(groups) ? groups : [] 

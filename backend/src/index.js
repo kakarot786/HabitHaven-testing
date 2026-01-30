@@ -17,12 +17,12 @@ connectDB()
   .then(() => {
     const PORT = process.env.PORT || 8000;
 
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, '0.0.0.0', () => {
       console.log(`Server is Listening at port : ${PORT}`);
     });
 
-    app.on("error", (error) => {
-      console.error("Express app encountered an error: ", error);
+    server.on("error", (error) => {
+      console.error("Server encountered an error: ", error);
       process.exit(1); 
     });
   })

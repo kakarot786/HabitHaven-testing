@@ -6,7 +6,7 @@ export const prayerService = {
     const result = await apiService.post('/prayer/prayers');
     
     if (result.success) {
-      const prayerData = result.data?.message || result.data?.data || [];
+      const prayerData = result.data?.data || [];
       const normalizedData = Array.isArray(prayerData) ? prayerData.map(prayer => ({
         _id: prayer._id || prayer.id,
         prayerName: prayer.prayerName || prayer.name || prayer.prayer_name || prayer.type,
@@ -25,7 +25,7 @@ export const prayerService = {
     const result = await apiService.get('/prayer/prayers/today');
     
     if (result.success) {
-      const prayerData = result.data?.message || result.data?.data || [];
+      const prayerData = result.data?.data || [];
       const normalizedData = Array.isArray(prayerData) ? prayerData.map(prayer => ({
         _id: prayer._id || prayer.id,
         prayerName: prayer.prayerName || prayer.name || prayer.prayer_name || prayer.type,
@@ -52,7 +52,7 @@ export const prayerService = {
     const result = await apiService.post(`/prayer/${prayerId}/complete`);
     
     if (result.success) {
-      const responseData = result.data?.message || result.data?.data || result.data;
+      const responseData = result.data?.data || result.data;
       return { success: true, data: responseData };
     }
     

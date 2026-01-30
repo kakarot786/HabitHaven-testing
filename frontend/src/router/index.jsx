@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Box, CircularProgress, Typography, Avatar } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import { Mosque } from '@mui/icons-material';
 import ProtectedRoute from '../components/ProtectedRoute';
 import PublicOnlyRoute from '../components/PublicOnlyRoute';
@@ -11,41 +11,50 @@ const LoginPage = lazy(() => import('../pages/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage'));
 const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 
-// Loading component
+// Loading component - matches Dashboard loading screen
 const LoadingFallback = () => (
   <Box
     sx={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #f0f9ff 0%, #dbeafe 100%)',
+      background: 'linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #f8fafc 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
     }}
   >
     <Box sx={{ textAlign: 'center' }}>
-      <Avatar
+      <Box
         sx={{
           width: 80,
           height: 80,
+          background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%)',
+          borderRadius: 4,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           mx: 'auto',
           mb: 3,
-          background: 'linear-gradient(135deg, #0284c7 0%, #0369a1 100%)',
-          boxShadow: '0 8px 24px rgba(2, 132, 199, 0.3)'
+          boxShadow: '0 20px 40px rgba(99, 102, 241, 0.3)',
+          animation: 'pulse 2s infinite',
+          '@keyframes pulse': {
+            '0%, 100%': { transform: 'scale(1)' },
+            '50%': { transform: 'scale(1.05)' }
+          }
         }}
       >
         <Mosque sx={{ fontSize: 40, color: 'white' }} />
-      </Avatar>
+      </Box>
       <CircularProgress 
         sx={{ 
-          color: '#0284c7',
+          color: '#6366f1',
           mb: 2
         }} 
       />
       <Typography 
         variant="h6" 
         sx={{ 
-          color: '#082f49',
-          fontWeight: 600 
+          color: '#1e293b',
+          fontWeight: 700 
         }}
       >
         Loading...
